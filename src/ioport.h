@@ -126,7 +126,7 @@ uint32_t Read_32(void)
     uint32_t value = PIND;
 
     // waits for 1 second (waits until the next clock edge)
-    _delay_ms(1000);
+    // _delay_ms(1000);
 
     // selects the second 74LS244
     /*
@@ -140,7 +140,10 @@ uint32_t Read_32(void)
     value |= (uint32_t)PIND << 8;
 
     // waits for 1 second (waits until the next clock edge)
-    _delay_ms(1000);
+    // _delay_ms(1000);
+
+    //clears PB0 to PB3 
+    PORTB &= 0xF0;
 
     // selects the third 74LS244
     /*
@@ -154,7 +157,7 @@ uint32_t Read_32(void)
     value |= (uint32_t)PIND << 16;
 
     // waits for 1 second (waits until the next clock edge)
-    _delay_ms(1000);
+    // _delay_ms(1000);
 
     // selects the fourth 74LS244
     /*
@@ -168,5 +171,7 @@ uint32_t Read_32(void)
     value |= (uint32_t)PIND << 24;
 
     // waits for 1.5 seconds
-    _delay_ms(1500);
+    // _delay_ms(1500);
+
+    return value;
 }
